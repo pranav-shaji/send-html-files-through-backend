@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <h1>My First Heading</h1>
+
+    <p>My first paragraph.</p>
+
+    <!-- <button onclick="getData()">CLICK</button> -->
+    <a href="http://localhost:4000/payment/pay">
+      <button>PHONEPAY</button>
+    </a>
+
+    <ul id="list">
+    </ul>
+
+    <script>
+      let list = document.getElementById("list");
+
+      async function getData() {
+        let data = await fetch(
+          "http://localhost:4000/product/get-products-by-category/Electronics"
+        );
+        let result = await data.json();
+
+        console.log(result);
+
+        result.forEach((element) => {
+          let item = document.createElement("li");
+          item.textContent = element.name;
+          list.appendChild(item);
+        });
+      }
+
+      getData()
+    </script>
+  </body>
+</html>
